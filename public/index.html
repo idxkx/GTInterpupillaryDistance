@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>瞳距测量系统 - Pupillary Distance Measurement</title>
+    <meta name="description" content="基于浏览器的瞳距测量应用程序">
+</head>
+<body>
+    <div id="app">
+        <!-- 主容器 -->
+        <div class="container">
+            <!-- 标题区域 -->
+            <header class="header">
+                <h1>瞳距测量系统</h1>
+                <p class="subtitle">Pupillary Distance Measurement</p>
+            </header>
+
+            <!-- 视频显示区域 -->
+            <div class="video-container">
+                <video id="video" autoplay playsinline></video>
+                <canvas id="overlay"></canvas>
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p id="loading-message">正在初始化...</p>
+                </div>
+            </div>
+
+            <!-- 状态提示区域 -->
+            <div id="status-message" class="status-message info">
+                <p id="status-text">请允许访问摄像头</p>
+            </div>
+
+            <!-- 测量结果显示区域 -->
+            <div id="result-container" class="result-container hidden">
+                <div class="result-value">
+                    <span class="result-label">瞳距 (IPD):</span>
+                    <span id="ipd-value" class="ipd-value">--</span>
+                    <span class="result-unit">mm</span>
+                </div>
+                <p class="disclaimer">* 测量结果为近似值，仅供参考</p>
+            </div>
+
+            <!-- 调试信息面板 -->
+            <div id="debug-panel" class="debug-panel hidden">
+                <h3>调试信息</h3>
+                <div class="debug-info">
+                    <p>FPS: <span id="debug-fps">--</span></p>
+                    <p>人脸检测: <span id="debug-face">--</span></p>
+                    <p>左眼坐标: <span id="debug-left-eye">--</span></p>
+                    <p>右眼坐标: <span id="debug-right-eye">--</span></p>
+                    <p>像素距离: <span id="debug-pixel-distance">--</span></p>
+                    <p>卡片检测: <span id="debug-card">--</span></p>
+                    <p>卡片宽度: <span id="debug-card-width">--</span></p>
+                </div>
+            </div>
+
+            <!-- 控制按钮 -->
+            <div class="controls">
+                <button id="toggle-debug" class="btn btn-secondary">切换调试模式</button>
+                <button id="restart" class="btn btn-primary hidden">重新开始</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
